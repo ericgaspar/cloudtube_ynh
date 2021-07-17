@@ -1,6 +1,5 @@
 [Unit]
-Description=Bibliogram: an alternative Instagram front-end
-After=network.target
+Description=CloudTube website
 
 [Service]
 Type=simple
@@ -8,9 +7,13 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
 Environment=__YNH_NODE_LOAD_PATH__
-Environment="NODE_ENV=production"
-ExecStart=__YNH_NPM__ run start
+ExecStart=__YNH_NODE_LOAD_PATH__ __FINALPATH__/cloudtube/server.js
+
+# Restart timing
 Restart=always
+RestartSec=60
+
+SyslogIdentifier=cloudtube
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

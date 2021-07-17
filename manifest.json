@@ -1,6 +1,6 @@
 {
-    "name": "Bibliogram",
-    "id": "bibliogram",
+    "name": "CloudTube",
+    "id": "cloudtube",
     "packaging_format": 1,
     "description": {
         "en": "An alternative Instagram front-end",
