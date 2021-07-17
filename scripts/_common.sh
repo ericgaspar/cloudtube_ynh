@@ -21,7 +21,6 @@ nodejs_version=14
 # FUTURE OFFICIAL HELPERS
 #=================================================
 
-
 # Check the architecture
 #
 # example: architecture=$(ynh_detect_arch)

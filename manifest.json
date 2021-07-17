@@ -32,19 +32,11 @@
             {
                 "name": "domain",
                 "type": "domain",
-                "help": {
-                    "en": "Bibliogram needs to be installed in a root domain or subdomain",
-                    "fr": "Bibliogram doit être installé dans un domaine racine ou un sous-domaine"
-                },
                 "example": "bibliogram.domain.org"
             },
             {
                 "name": "is_public",
                 "type": "boolean",
-                "help": {
-                    "en": "If enabled, Bibliogram will be accessible by people who do not have an account. This can be changed later via the webadmin.",
-                    "fr": "Si cette case est cochée, Bibliogram sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
-                },
                 "default": true
             }
         ]
