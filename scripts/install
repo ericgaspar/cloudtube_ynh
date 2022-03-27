@@ -94,7 +94,7 @@ ynh_script_progression --message="Setting up source files..." --weight=2
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Note: We use git instead of ynh_setup_source, cause this repo use submodules
-git clone https://git.sr.ht/~cadence/bibliogram "$final_path" --quiet
+git clone https://git.sr.ht/~cadence/cloudtube "$final_path" --quiet
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
@@ -117,18 +117,18 @@ ynh_script_progression --message="Building $app... (this will take some time and
 
 pushd "$final_path"
 	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app $ynh_node_load_PATH yarn install --no-optional
-popd || ynh_die
+	ynh_exec_warn_less sudo -u $app $ynh_node_load_PATH ynh_npm install --no-optional
+popd
 
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Adding a configuration file..."
 
-ynh_add_config --template="../conf/config.js" --destination="$final_path/config.js"
+ynh_add_config --template="../conf/config.js" --destination="$final_path/config/config.js"
 
-chmod 600 "$final_path/config.js"
-chown $app:$app "$final_path/config.js"
+chmod 600 "$final_path/config/config.js"
+chown $app:$app "$final_path/config/config.js"
 
 #=================================================
 # SETUP SYSTEMD

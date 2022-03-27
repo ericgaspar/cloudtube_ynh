@@ -7,12 +7,10 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
 Environment=__YNH_NODE_LOAD_PATH__
-ExecStart=__YNH_NODE_LOAD_PATH__ __FINALPATH__/cloudtube/server.js
-
+ExecStart=__YNH_NODE_LOAD_PATH__ __FINALPATH__/server.js
 # Restart timing
 Restart=always
 RestartSec=60
-
 SyslogIdentifier=cloudtube
 
 [Install]
