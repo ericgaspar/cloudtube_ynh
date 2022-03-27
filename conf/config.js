@@ -1,11 +1,14 @@
-/*
-	Welcome to the config file!
-	Add keys here to override values from /src/lib/constants.js. Please look at that file for override recommendations.
-	This file should hopefully never be altered upstream.
-	You must restart Bibliogram to apply these changes.
-*/
-
 module.exports = {
+	/*
+	  Copy this file to `config.js`, and add options here.
+	  They'll override the options from `utils/constants.js`.
+	  For example, the next block changes the default instance.
+	*/
 
-	website_origin: "http://__DOMAIN__",
+	user_settings: {
+		instance: {
+			default: "https://__DOMAIN__"
+		}
+	}
 }
+
