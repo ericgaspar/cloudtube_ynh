@@ -77,7 +77,6 @@ ynh_install_app_dependencies $pkg_dependencies
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 # Install Yarn
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
 
 #=================================================
@@ -112,11 +111,11 @@ ynh_add_nginx_config
 #=================================================
 # SPECIFIC SETUP
 #==============================================
-# INSTALL HEDGEDOC
+# INSTALL CLOUDTUBE
 #==============================================
 ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=20
 
-pushd "$final_path" || ynh_die
+pushd "$final_path"
 	ynh_use_nodejs
 	ynh_exec_warn_less sudo -u $app $ynh_node_load_PATH yarn install --no-optional
 popd || ynh_die
@@ -154,7 +153,7 @@ yunohost service add $app --description="An alternative Instagram front-end" --l
 ynh_script_progression --message="Starting a systemd service..." --weight=2
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path=systemd --line_match="Server started"
+ynh_systemd_action --service_name=$app --action="start" --log_path=systemd #--line_match="Server started"
 
 #=================================================
 # SETUP SSOWAT
