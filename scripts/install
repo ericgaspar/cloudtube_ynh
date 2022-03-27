@@ -99,18 +99,6 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=2
 ynh_add_nginx_config
 
 #=================================================
-# SPECIFIC SETUP
-#==============================================
-# INSTALL CLOUDTUBE
-#==============================================
-ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=20
-
-pushd "$final_path"
-	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app $ynh_node_load_PATH npm install --no-optional
-popd
-
-#=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Adding a configuration file..."
@@ -119,6 +107,18 @@ ynh_add_config --template="../conf/config.js" --destination="$final_path/config/
 
 chmod 600 "$final_path/config/config.js"
 chown $app:$app "$final_path/config/config.js"
+
+#=================================================
+# SPECIFIC SETUP
+#==============================================
+# INSTALL CLOUDTUBE
+#==============================================
+ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=20
+
+pushd "$final_path"
+	ynh_use_nodejs
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH $ynh_npm install --no-optional
+popd
 
 #=================================================
 # SETUP SYSTEMD
